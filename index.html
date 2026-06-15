@@ -798,11 +798,11 @@ function showAuthError(msg) {
 // ── PRODUCTS ──
 async function loadProducts() {
   const { data, error } = await sb.from('products')
-    .select('*, users(full_name, country, rating)')
-    .eq('is_available', true)
+    .select('*')
     .order('created_at', { ascending: false });
-  if (error) { console.error(error); return []; }
+  if (error) { console.error('Load error:', error); return []; }
   return data || [];
+}
 }
 
 const categoryEmojis = {Women:'👗',Men:'👔',Kids:'🧒',Vintage:'🎩',Shoes:'👟',Streetwear:'🧢',Accessories:'💍'};
